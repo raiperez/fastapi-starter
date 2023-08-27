@@ -1,2 +1,2 @@
-export { ImdbApiError } from "./ImdbApiError";
-export { ImdbApiTimeoutError } from "./ImdbApiTimeoutError";
+export { TokuAssignmentApiError } from "./TokuAssignmentApiError";
+export { TokuAssignmentApiTimeoutError } from "./TokuAssignmentApiTimeoutError";

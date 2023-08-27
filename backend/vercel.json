@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "src/fern_fastapi_starter/server.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/fern_fastapi_starter/server.py"
+    }
+  ]
+}

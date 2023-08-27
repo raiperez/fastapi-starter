@@ -1,4 +1,4 @@
-default-group: local
+default-group: sdks
 groups:
   local:
     generators:
@@ -19,3 +19,12 @@ groups:
         output:
           location: local-file-system
           path: ../../openapi
+
+  sdks:
+    generators:
+      - name: fernapi/fern-postman
+        version: 0.0.31
+        output:
+          location: postman
+          api-key: ${POSTMAN_API_KEY}
+          workspace-id: ${POSTMAN_WORKSPACE_ID}

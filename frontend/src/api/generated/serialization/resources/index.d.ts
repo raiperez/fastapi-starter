@@ -1,2 +1,3 @@
-export * as imdb from "./imdb";
-export * from "./imdb/types";
+export * as heroSim from "./heroSim";
+export * from "./heroSim/types";
+export * from "./heroSim/client/requests";

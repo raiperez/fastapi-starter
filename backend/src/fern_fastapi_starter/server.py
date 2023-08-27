@@ -3,11 +3,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .api.generated.register import register
-from .movies_service import MoviesService
+from .hero_sim_service import HeroSimService
 
 app = FastAPI()
 
-register(app, imdb=MoviesService())
+register(app, hero_sim=HeroSimService())
 
 app.add_middleware(
     CORSMiddleware,

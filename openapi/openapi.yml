@@ -2,26 +2,23 @@ openapi: 3.0.1
 info:
   title: api
   version: ''
+  description: This API is part of Toku Assignment for Senior Engineer Interview.
 paths:
-  /movies/{movieId}:
-    get:
-      operationId: imdb_getMovie
+  /consumer/simulate:
+    post:
+      description: Queue N simulations of fights between 2 heroes
+      operationId: heroSim_runSimulation
       tags:
-        - Imdb
-      parameters:
-        - name: movieId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/MovieId'
+        - HeroSim
+      parameters: []
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Movie'
-        '404':
+                $ref: '#/components/schemas/RunSimulationResponse'
+        '400':
           description: ''
           content:
             application/json:
@@ -32,28 +29,41 @@ paths:
                       error:
                         type: string
                         enum:
-                          - MovieDoesNotExistError
+                          - InvalidRequestError
                       content:
-                        $ref: '#/components/schemas/MovieId'
+                        $ref: '#/components/schemas/ErrorBody'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                numSimulations:
+                  type: integer
+              required:
+                - numSimulations
 components:
   schemas:
-    MovieId:
-      title: MovieId
-      type: string
-    Movie:
-      title: Movie
+    RunSimulationResponse:
+      title: RunSimulationResponse
       type: object
       properties:
-        id:
-          $ref: '#/components/schemas/MovieId'
-        title:
-          type: string
-        rating:
-          type: number
-          format: double
-          description: The rating scale is one to five stars
+        startId:
+          type: integer
+          description: The id of the first simulation job created
+        endId:
+          type: integer
+          description: The id of the last simulation job created
       required:
-        - id
-        - title
-        - rating
+        - startId
+        - endId
+    ErrorBody:
+      title: ErrorBody
+      type: object
+      properties:
+        errorMessage:
+          type: string
+      required:
+        - errorMessage
   securitySchemes: {}

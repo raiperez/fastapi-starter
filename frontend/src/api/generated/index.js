@@ -1,3 +1,3 @@
-export * as ImdbApi from "./api";
-export { ImdbApiClient } from "./Client";
-export { ImdbApiError, ImdbApiTimeoutError } from "./errors";
+export * as TokuAssignmentApi from "./api";
+export { TokuAssignmentApiClient } from "./Client";
+export { TokuAssignmentApiError, TokuAssignmentApiTimeoutError } from "./errors";

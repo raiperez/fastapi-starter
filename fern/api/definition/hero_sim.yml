@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
+
+service:
+  auth: false
+  base-path: /consumer
+  endpoints:
+    runSimulation:
+      docs: Queue N simulations of fights between 2 heroes
+      method: POST
+      path: /simulate
+      request:
+        name: RunSimulationRequest
+        body:
+          properties:
+            numSimulations: integer
+      response: RunSimulationResponse
+      errors:
+        - InvalidRequestError
+
+types:
+  RunSimulationResponse:
+    properties:
+      startId:
+        type: integer
+        docs: The id of the first simulation job created
+      endId:
+        type: integer
+        docs: The id of the last simulation job created
+
+  ErrorBody:
+    properties:
+      errorMessage: string
+
+errors:
+  InvalidRequestError:
+    status-code: 400
+    type: ErrorBody
